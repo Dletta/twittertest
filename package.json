@@ -1,0 +1,19 @@
+{
+  "name": "twittertest",
+  "version": "1.0.0",
+  "description": "testing twitter api",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fuchidahiro/twittertest.git"
+  },
+  "author": "Jachen Duschletta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fuchidahiro/twittertest/issues"
+  },
+  "homepage": "https://github.com/fuchidahiro/twittertest#readme"
+}
