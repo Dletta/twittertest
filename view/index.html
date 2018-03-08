@@ -5,12 +5,14 @@
     <title>Trending Data</title>
   </head>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <link rel="stylesheet" href="index.css">
   <body>
     <button type="button" onclick="getAccess()">Access Twitter</button>
     <div id="cont">
       <div class="card" v-for="item in tweets">
-        {{item.location}}
-        {{item}}
+        {{item.place.country}} <br>
+        {{item.place.full_Name}} <br>
+        {{item.place}}
       </div>
     </div>
   </body>
