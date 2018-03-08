@@ -4,8 +4,15 @@
     <meta charset="utf-8">
     <title>Trending Data</title>
   </head>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <body>
-    Testing
+    <button type="button" onclick="getAccess()">Access Twitter</button>
+    <div id="cont">
+      <div class="card" v-for="item in tweets">
+        {{item.location}}
+        {{item}}
+      </div>
+    </div>
   </body>
   <script src="index.js" charset="utf-8"></script>
 </html>
