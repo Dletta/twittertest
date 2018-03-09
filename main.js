@@ -7,7 +7,7 @@ var twit = new twitter({
   consumer_key: 'b4evMsxPWWbofvf0VaXxQH8UJ',
   consumer_secret: 'KE5j1olB0inA1fnfFsVdD9EeiMh59tcjFGweadUl5U1YzwzlFh',
   access_token_key: '2557688262-RmsnZO41C18Cq2PEqLJj8Hy5IHucAoTkzmxOQRh',
-  access_token_secret: 's7DQkoEH9tWx1j4dZkI377XkazP0Iw9RGTveFyC7RAp0j'
+  access_token_secret: ' s7DQkoEH9tWx1j4dZkI377XkazP0Iw9RGTveFyC7RAp0j'
 });
 
 let win
@@ -59,11 +59,11 @@ ipcMain.on('ready', (event, msg) =>{
 })
 
 function getStream () {
-  twit.stream('statuses/filter', {'track':'restaurant, best, seattle'}, function(stream) {
+  twit.stream('statuses/filter', {'locations':'-122.5731,47.2662,-121.918,47.8685'}, function(stream) {
   stream.on('data', function (data) {
-    win.webContents.send('newTweet', data)
+    console.log(data);
+    });
   });
-});
 }
 
 ipcMain.on('getStream', (event, msg) =>{

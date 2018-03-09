@@ -9,8 +9,9 @@
   <body>
     <button type="button" onclick="getAccess()">Access Twitter</button>
     <div id="cont">
-      <div class="card" v-for="item in tweets">
-       {{item.text}}
+      <div class="card" v-for="(item, index) in tweets">
+        {{index}} <br>
+        {{item.text}}
       </div>
     </div>
   </body>
