@@ -28,7 +28,6 @@ ipcRenderer.on('clientLog', (event, msg) => {
 })
 
 ipcRenderer.on('newTweet', (event, data) => {
-  console.log(`Received ${data}`);
   twit.add(data)
 })
 

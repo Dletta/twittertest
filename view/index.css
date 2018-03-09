@@ -1,4 +1,10 @@
-card {
+#cont {
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.card {
+  display: block;
   border:1px solid black;
-  width: 50%;
+  width: 300px;
 }

@@ -10,9 +10,7 @@
     <button type="button" onclick="getAccess()">Access Twitter</button>
     <div id="cont">
       <div class="card" v-for="item in tweets">
-        {{item.place.country}} <br>
-        {{item.place.full_Name}} <br>
-        {{item.place}}
+       {{item.text}}
       </div>
     </div>
   </body>
