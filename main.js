@@ -59,11 +59,15 @@ ipcMain.on('ready', (event, msg) =>{
 })
 
 function getStream () {
-  twit.stream('statuses/filter', {'track':'restaurant, best, seattle'}, function(stream) {
-  stream.on('data', function (data) {
+  /*twit.search('Seattle OR Seattle Museum', {}, function(err, data) {
+    console.log(err);
     win.webContents.send('newTweet', data)
+  });*/
+  twit.stream('statuses/filter', {'track':'seattle art museum'}, function(stream) {
+    stream.on('data', function (data) {
+      win.webContents.send('newTweet', data)
+    });
   });
-});
 }
 
 ipcMain.on('getStream', (event, msg) =>{
