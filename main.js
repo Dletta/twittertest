@@ -59,9 +59,19 @@ ipcMain.on('ready', (event, msg) =>{
 })
 
 function getStream () {
+<<<<<<< HEAD
   twit.stream('statuses/filter', {'locations':'-122.5731,47.2662,-121.918,47.8685'}, function(stream) {
   stream.on('data', function (data) {
     console.log(data);
+=======
+  /*twit.search('Seattle OR Seattle Museum', {}, function(err, data) {
+    console.log(err);
+    win.webContents.send('newTweet', data)
+  });*/
+  twit.stream('statuses/filter', {'track':'seattle art museum'}, function(stream) {
+    stream.on('data', function (data) {
+      win.webContents.send('newTweet', data)
+>>>>>>> a5e27bf0179beea9534f5a6092467edfa1fc4ddd
     });
   });
 }
