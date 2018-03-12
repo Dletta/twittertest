@@ -5,8 +5,10 @@
     <title>Trending Data</title>
   </head>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" charset="utf-8"></script>
   <link rel="stylesheet" href="index.css">
   <body>
+    <canvas id="myChart" width="400" height="400"></canvas>
     <button type="button" onclick="getAccess()">Access Twitter</button>
     <div id="cont">
       <div class="card" v-for="(item, index) in tweets">
