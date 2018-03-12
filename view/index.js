@@ -3,7 +3,7 @@ var {ipcRenderer} = require('electron')
 var Tweets = function () {
   this.tweets = []
   this.add = function (item) {
-    if(this.tweets.length < 10) {
+    if(this.tweets.length < 10000) {
       this.tweets.push(item)
     } else {
       this.tweets.shift()
