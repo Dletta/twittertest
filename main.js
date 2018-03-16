@@ -1,4 +1,6 @@
 const {app, BrowserWindow, ipcMain} = require('electron')
+const fs = require('fs')
+const os = require('os')
 const path = require('path')
 const url = require('url')
 var twitter = require('ntwitter');
@@ -7,7 +9,7 @@ var twit = new twitter({
   consumer_key: 'b4evMsxPWWbofvf0VaXxQH8UJ',
   consumer_secret: 'KE5j1olB0inA1fnfFsVdD9EeiMh59tcjFGweadUl5U1YzwzlFh',
   access_token_key: '2557688262-RmsnZO41C18Cq2PEqLJj8Hy5IHucAoTkzmxOQRh',
-  access_token_secret: ' s7DQkoEH9tWx1j4dZkI377XkazP0Iw9RGTveFyC7RAp0j'
+  access_token_secret: 's7DQkoEH9tWx1j4dZkI377XkazP0Iw9RGTveFyC7RAp0j'
 });
 
 let win
@@ -59,19 +61,21 @@ ipcMain.on('ready', (event, msg) =>{
 })
 
 function getStream () {
-<<<<<<< HEAD
-  twit.stream('statuses/filter', {'locations':'-122.5731,47.2662,-121.918,47.8685'}, function(stream) {
-  stream.on('data', function (data) {
-    console.log(data);
-=======
   /*twit.search('Seattle OR Seattle Museum', {}, function(err, data) {
     console.log(err);
     win.webContents.send('newTweet', data)
   });*/
-  twit.stream('statuses/filter', {'track':'seattle art museum'}, function(stream) {
+  twit.stream('statuses/filter', {'locations':'-122.670518,47.210218,-121.368207,48.181262'}, function(stream) {
+    stream.on('error', function(err){
+      console.log(`Got error: ${err}`);
+    })
+
     stream.on('data', function (data) {
       win.webContents.send('newTweet', data)
->>>>>>> a5e27bf0179beea9534f5a6092467edfa1fc4ddd
+      var data = JSON.stringify(data) + os.EOL
+      fs.appendFile('tweetsSeattle.txt', data, (err)=>{
+        if (err) throw err;
+      })
     });
   });
 }
