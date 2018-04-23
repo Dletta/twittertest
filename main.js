@@ -120,7 +120,7 @@ var gWordFactory = function () {
 }
 
 var Words = new gWordFactory()
-setInterval(Words.process(), 1000)
+setInterval(Words.process, 1000)
 
 /*
 * Function that filters the data down to text, created_at and adds our own timestamp
