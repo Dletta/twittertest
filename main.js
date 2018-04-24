@@ -73,7 +73,7 @@ function getStream () {
     stream.on('data', function (data) {
       var data = filterData(data) /* removed columns that are not necessary for trending data and add our own timestamp */
       Words.input.push(data)
-      win.webContents.send('newTweet', data) /* Send Tweet to Page */
+
       /*
       var data = JSON.stringify(data) + os.EOL
       fs.appendFile('tweetsSeattle.txt', data, (err)=>{
@@ -89,6 +89,7 @@ ipcMain.on('getStream', (event, msg) =>{
   getStream()
 })
 
+
 /*
 * Example Tweet after Filter
 {"created_at":"Fri Mar 16 15:29:01 +0000 2018","text":"@TravisMayfield THAT SURECWASCA QUICK VACATION TRAVIS.✌","timestamp":"2018-03-16 7:29:01"}
@@ -103,24 +104,73 @@ ipcMain.on('getStream', (event, msg) =>{
 */
 var gWordFactory = function () {
   this.input = []
-  this.output = []
   this.process = function() {
-    if(this.input.length > 1){
+    if(this.input.length >= 1 ){
         var data = this.input.shift()
         var time = data["timestamp"]
-        var words = data["text"].split(" ")
-        for(let i=0;i<words.length;i++){
-          var temp = {}
-          temp["label"] = words[i]
-          temp["time"] = time
-          this.output.push(temp)
+        var words = []
+        words = data["text"].split(" ")
+        if(words.length >= 1){
+          for(let i=0;i<words.length;i++){
+            var temp = {}
+            temp["label"] = words[i]
+            temp["time"] = time
+            Data.input.push(temp)
+          }
         }
     }
   }
 }
 
+/* Output is {label: word, time: timestring} */
+
+var gDataFactory = function () {
+  this.input = []
+  this.words = []
+  this.process = function() {
+    if(this.input.length >= 1) {
+      var data = this.input.shift()
+      if(this.words.length >= 1){
+        if(this.words.some(e => e.label == data.label)){
+          this.words.forEach(elem => {
+            if(elem.label == data.label ){
+              elem.time.push(data.time)
+            }
+          })
+        } else {
+          var temp = new DataRecord(data.label)
+          temp.time.push(data.time)
+          this.words.push(temp)
+        }
+      } else {
+        var temp = new DataRecord(data.label)
+        temp.time.push(data.time)
+        this.words.push(temp)
+      }
+    }
+  win.webContents.send('newTweet', this.words)
+  }
+}
+
+var DataRecord = function(lab) {
+  this.label = lab
+  this.time = []
+}
+
 var Words = new gWordFactory()
-setInterval(Words.process, 1000)
+
+function processWords (){
+  Words.process()
+}
+
+var Data = new gDataFactory()
+
+function processData() {
+  Data.process()
+}
+
+setInterval(processWords, 1000)
+setInterval(processData, 1000)
 
 /*
 * Function that filters the data down to text, created_at and adds our own timestamp
@@ -129,7 +179,7 @@ setInterval(Words.process, 1000)
 function filterData (data) {
   var temp = {}
   temp["created_at"] = data["created_at"]
-  temp["timestamp"] = new Date()
+  temp["timestamp"] = new Date().toString()
   temp["text"] = data["text"]
   return temp
 }
