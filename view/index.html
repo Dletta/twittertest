@@ -10,10 +10,13 @@
   <body>
     <!--<canvas id="myChart" width="400" height="400"></canvas>-->
     <button type="button" onclick="getAccess()">Access Twitter</button>
+    <input type="text" onchange="twit.filtered()" id="search">
+    <input type="text" onchange="twit.time()" id="time">
     <div id="cont">
-      <div class="card" v-for="(item, index) in tweets">
-        Word: {{item.label}} <br>
-        Count: {{item.time.length}}
+      <div class="card" v-for="tweet in filteredTweets">
+        Word: {{tweet.label}} <br>
+        Count: {{tweet.time.length}} <br>
+        Time: {{tweet.time}}
       </div>
     </div>
   </body>
