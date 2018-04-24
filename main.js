@@ -113,8 +113,8 @@ var gWordFactory = function () {
         if(words.length >= 1){
           for(let i=0;i<words.length;i++){
             var temp = {}
-            temp["label"] = words[i]
-            temp["time"] = time
+            temp.label = words[i]
+            temp.time = time
             Data.input.push(temp)
           }
         }
@@ -183,3 +183,5 @@ function filterData (data) {
   temp["text"] = data["text"]
   return temp
 }
+
+/* Output: {"created_at":string, "timestamp":timestring, "text":tweetText}*/

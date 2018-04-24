@@ -28,7 +28,7 @@ ipcRenderer.on('clientLog', (event, msg) => {
 })
 
 ipcRenderer.on('newTweet', (event, data) => {
-  twit.add(data)
+  twit.tweets = data
 })
 
 var getAccess = function () {

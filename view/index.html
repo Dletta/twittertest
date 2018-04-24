@@ -12,8 +12,8 @@
     <button type="button" onclick="getAccess()">Access Twitter</button>
     <div id="cont">
       <div class="card" v-for="(item, index) in tweets">
-        {{index}} <br>
-        {{item}}
+        Word: {{item.label}} <br>
+        Count: {{item.time.length}}
       </div>
     </div>
   </body>
