@@ -24,13 +24,14 @@ var Tweets = function () {
     data.timeId = time.set(data.timestamp)
     data.textId = text.set(data.text)
     /* Link data with each other */
+    console.log(data.timeId);
     data.timeId.set(data.textId)
     data.timeId.set(data.placeId)
     data.textId.set(data.timeId)
     data.textId.set(data.placeId)
     data.placeId.set(data.textId)
     data.placeId.set(data.timeId)
-    for(let i=0;i<data.wordId;i++){
+    for(let i=0;i<data.wordId.length;i++){
       data.timeId.set(data.wordId[i])
       data.textId.set(data.wordId[i])
       data.placeId.set(data.wordId[i])
