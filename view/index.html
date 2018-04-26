@@ -9,13 +9,12 @@
   <body>
     <!--<canvas id="myChart" width="400" height="400"></canvas>-->
     <button type="button" onclick="getAccess()">Access Twitter</button>
-    <input type="text" onchange="twit.filtered()" id="search">
-    <input type="text" onchange="twit.time()" id="time">
     <div id="cont">
-      <div class="card" v-for="tweet in filteredTweets">
-        Word: {{tweet.label}} <br>
-        Count: {{tweet.time.length}} <br>
-        Time: {{tweet.time}}
+      <div class="card" v-for="tweet in tweets">
+        Location: {{tweet.location["full_name"]}} <br>
+        Text: {{tweet.text}} <br>
+        Time: {{tweet.timestamp}} <br>
+        coordinates: {{tweet.coordinates}}
       </div>
     </div>
   </body>

@@ -2,29 +2,6 @@ var {ipcRenderer} = require('electron')
 
 var Tweets = function () {
   this.tweets = []
-  this.filteredTweets = []
-  this.filtered = function(ev){
-    var string = document.getElementById('search').value
-    console.log(string);
-    if(string == "*" || ""){
-      this.filteredTweets = this.tweets
-    } else {
-      this.filteredTweets = this.tweets.filter((el) => {
-        return el.label.toLowerCase().indexOf(string.toLowerCase()) > -1
-      })
-    }
-  }
-  this.time = function(ev){
-    var string = document.getElementById('time').value
-    console.log(string);
-    if(string == "*" || ""){
-      this.filteredTweets = this.tweets
-    } else {
-      this.filteredTweets = this.tweets.filter((el) => {
-        return el.time[0].toLowerCase().indexOf(string.toLowerCase()) > -1
-      })
-    }
-  }
 }
 
 var twit = new Tweets()
@@ -42,19 +19,15 @@ ipcRenderer.on('clientLog', (event, msg) => {
   console.log(msg);
 })
 
-function compare(a, b) {
-  if(a.time.length>b.time.length){
-      return -1
-  } else if(b.time.length > a.time.length) {
-    return 1
-  } else {
-    return 0
-  }
-}
+
+/* Input: {
+*"location":object,
+*"coordinates": null or array of coordinates,
+*"timestamp":ms since 1968,
+*"text":tweetText}*/
 
 ipcRenderer.on('newTweet', (event, data) => {
-  data.sort(compare)
-  twit.tweets = data
+  twit.tweets.push(data)
 })
 
 var getAccess = function () {
