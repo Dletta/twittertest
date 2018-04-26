@@ -4,8 +4,13 @@ const os = require('os')
 const path = require('path')
 const url = require('url')
 var twitter = require('ntwitter');
-require('secret.js')
-console.log(`Got ${twit}`)
+
+var twit = new twitter({
+  consumer_key: 'b4evMsxPWWbofvf0VaXxQH8UJ',
+  consumer_secret: 'KE5j1olB0inA1fnfFsVdD9EeiMh59tcjFGweadUl5U1YzwzlFh',
+  access_token_key: '2557688262-RmsnZO41C18Cq2PEqLJj8Hy5IHucAoTkzmxOQRh',
+  access_token_secret: 's7DQkoEH9tWx1j4dZkI377XkazP0Iw9RGTveFyC7RAp0j'
+});
 
 let win
 
