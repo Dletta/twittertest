@@ -12,5 +12,5 @@ var gun = new Gun( {
 localStorage.clear()
 
 function printData (val, key) {
-  console.log(val, key);
+  console.log(key, val);
 }
