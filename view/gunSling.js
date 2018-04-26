@@ -1,4 +1,11 @@
-var gun = Gun()
+var Gun = require('gun/gun')
+require('gun-file')
+var gun = new Gun( {
+  'file-name': 'service.gun',
+  'file-mode' : 0666,
+  'file-pretty' : true,
+  'file-delay' : 100
+})
 
 var alice = gun.get('alice').put({name: 'alice', age: 22})
 var bob = gun.get('bob').put({name: 'bob', age:24})

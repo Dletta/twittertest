@@ -1,0 +1,206 @@
+[
+   "alice",
+   {
+      "_": {
+         "#": "alice",
+         ">": {
+            "name": 1524758785934.74,
+            "age": 1524758785934.74,
+            "spouse": 1524758785972.47,
+            "employer": 1524758785974.51
+         }
+      },
+      "name": "alice",
+      "age": 22,
+      "spouse": {
+         "#": "bob"
+      },
+      "employer": {
+         "#": "startup"
+      }
+   }
+]
+[
+   "bob",
+   {
+      "_": {
+         "#": "bob",
+         ">": {
+            "name": 1524758785940.72,
+            "age": 1524758785940.72,
+            "spouse": 1524758785972.96,
+            "employer": 1524758785973.565
+         }
+      },
+      "name": "bob",
+      "age": 24,
+      "spouse": {
+         "#": "alice"
+      },
+      "employer": {
+         "#": "startup"
+      }
+   }
+]
+[
+   "carl",
+   {
+      "_": {
+         "#": "carl",
+         ">": {
+            "name": 1524758785941.58,
+            "age": 1524758785941.58,
+            "dad": 1524758785976.155,
+            "friends": 1524758785977.46
+         }
+      },
+      "name": "carl",
+      "age": 16,
+      "dad": {
+         "#": "dave"
+      },
+      "friends": {
+         "#": "jggq0gxkmiBkAT0uw5ypvT"
+      }
+   }
+]
+[
+   "dave",
+   {
+      "_": {
+         "#": "dave",
+         ">": {
+            "name": 1524758785941.96,
+            "age": 1524758785941.96,
+            "kids": 1524758785975.38
+         }
+      },
+      "name": "dave",
+      "age": 42,
+      "kids": {
+         "#": "jggq0gxjkit3xrCrCNtHklyq6r"
+      }
+   }
+]
+[
+   "people",
+   {
+      "_": {
+         "#": "people",
+         ">": {
+            "alice": 1524758785943.365,
+            "bob": 1524758785946.09,
+            "carl": 1524758785946.5,
+            "dave": 1524758785946.76
+         }
+      },
+      "alice": {
+         "#": "alice"
+      },
+      "bob": {
+         "#": "bob"
+      },
+      "carl": {
+         "#": "carl"
+      },
+      "dave": {
+         "#": "dave"
+      }
+   }
+]
+[
+   "jggq0gx3lyp66rxGs6ptQAiwJP",
+   {
+      "_": {
+         "#": "jggq0gx3lyp66rxGs6ptQAiwJP",
+         ">": {
+            "street": 1524758785964.85,
+            "city": 1524758785957.95,
+            "state": 1524758785957.95,
+            "country": 1524758785957.95
+         }
+      },
+      "street": "999 Expensive Boulevard",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "USA"
+   }
+]
+[
+   "startup",
+   {
+      "_": {
+         "#": "startup",
+         ">": {
+            "name": 1524758785957.95,
+            "profitable": 1524758785957.95,
+            "address": 1524758785964.85,
+            "funded": 1524758785964.85,
+            "employees": 1524758785971.125
+         }
+      },
+      "name": "hype",
+      "profitable": false,
+      "address": {
+         "#": "jggq0gx3lyp66rxGs6ptQAiwJP"
+      },
+      "funded": true,
+      "employees": {
+         "#": "jggq0gxcqn0zfrEwKM8aZHIHEU"
+      }
+   }
+]
+[
+   "jggq0gxcqn0zfrEwKM8aZHIHEU",
+   {
+      "_": {
+         "#": "jggq0gxcqn0zfrEwKM8aZHIHEU",
+         ">": {
+            "dave": 1524758785968.29,
+            "alice": 1524758785969.83,
+            "bob": 1524758785971.125
+         }
+      },
+      "dave": {
+         "#": "dave"
+      },
+      "alice": {
+         "#": "alice"
+      },
+      "bob": {
+         "#": "bob"
+      }
+   }
+]
+[
+   "jggq0gxjkit3xrCrCNtHklyq6r",
+   {
+      "_": {
+         "#": "jggq0gxjkit3xrCrCNtHklyq6r",
+         ">": {
+            "carl": 1524758785975.38
+         }
+      },
+      "carl": {
+         "#": "carl"
+      }
+   }
+]
+[
+   "jggq0gxkmiBkAT0uw5ypvT",
+   {
+      "_": {
+         "#": "jggq0gxkmiBkAT0uw5ypvT",
+         ">": {
+            "alice": 1524758785976.51,
+            "bob": 1524758785977.46
+         }
+      },
+      "alice": {
+         "#": "alice"
+      },
+      "bob": {
+         "#": "bob"
+      }
+   }
+]
