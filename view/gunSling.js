@@ -14,3 +14,15 @@ localStorage.clear()
 function printData (val, key) {
   console.log(key, val);
 }
+
+function findChildrenObj(obj, arr) {
+  obj.map().once((val, key)=>{
+    if(key != 'label') {
+      gun.get(key).map().once((val,key)=>{
+        if(key == 'timestamp'|| key == 'full_name' || key=='text' || key=='word'){
+            arr.push(val)
+        }
+      })
+    }
+  })
+}

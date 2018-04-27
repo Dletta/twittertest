@@ -1,5 +1,6 @@
 #cont {
   display:flex;
+  flex-direction: row;
   flex-wrap:wrap;
 }
 
@@ -7,4 +8,11 @@
   display: block;
   border:1px solid black;
   width: 300px;
+}
+
+.col {
+  display: flex;
+  flex-direction:column;
+  min-width: 300px;
+  border: 1px solid black;
 }

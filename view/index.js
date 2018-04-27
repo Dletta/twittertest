@@ -5,6 +5,10 @@ const util = require('util')
 
 var Tweets = function () {
   this.tweets = []
+  this.time = []
+  this.place = []
+  this.word = []
+  this.text = []
   this.process = function(data) {
     /*create objects for each data information that is not an object
     * makes it easier for working with the gunDB
@@ -17,10 +21,10 @@ var Tweets = function () {
     data.timestamp = {timestamp:data.timestamp}
     /*Enter Data and capture Id for linking */
     data.wordId = []
-    for(let i=0;i<data.words.length; i++){
+    for(let i=0;i<data.words.length;i++){
       data.wordId.push(words.set(data.words[i]))
     }
-    data.placeId = place.set(data.place)
+    data.placeId = place.set(data.location)
     data.timeId = time.set(data.timestamp)
     data.textId = text.set(data.text)
     /* Link data with each other */

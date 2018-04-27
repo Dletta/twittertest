@@ -10,11 +10,29 @@
     <!--<canvas id="myChart" width="400" height="400"></canvas>-->
     <button type="button" onclick="getAccess()">Access Twitter</button>
     <div id="cont">
-      <div class="card" v-for="tweet in tweets">
-        Location: {{tweet.location["full_name"]}} <br>
-        Text: {{tweet.text}} <br>
-        Time: {{tweet.timestamp}} <br>
-        coordinates: {{tweet.coordinates}}
+      <div class="col">
+        Time
+        <div class="card" v-for="item in time">
+          {{item}}
+        </div>
+      </div>
+      <div class="col">
+        Place
+        <div class="card" v-for="item in place">
+          {{item}}
+        </div>
+      </div>
+      <div class="col">
+        Text
+        <div class="card" v-for="item in text">
+          {{item}}
+        </div>
+      </div>
+      <div class="col">
+        Words
+        <div class="card" v-for="item in word">
+          {{item}}
+        </div>
       </div>
     </div>
   </body>
