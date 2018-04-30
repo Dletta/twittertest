@@ -11,18 +11,14 @@ var gun = new Gun( {
 
 localStorage.clear()
 
-function printData (val, key) {
-  console.log(key, val);
-}
-
-function findChildrenObj(obj, arr) {
-  obj.map().once((val, key)=>{
-    if(key != 'label') {
-      gun.get(key).map().once((val,key)=>{
-        if(key == 'timestamp'|| key == 'full_name' || key=='text' || key=='word'){
-            arr.push(val)
-        }
-      })
+function printData (obj) {
+  obj.once((val, key)=>{
+    if(typeof val != "object"){
+      console.log(`${key}:${val}`);
     }
   })
+}
+
+function print(x,y) {
+  console.log(`Node with ${y} : ${x}`)
 }

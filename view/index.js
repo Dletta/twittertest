@@ -54,11 +54,28 @@ var app = new Vue({
 })
 
 console.log('ready');
+
 /* Setup of the main roots */
+
 var time = gun.get('time').put({label:'time'})
 var text = gun.get('text').put({label:'text'})
 var words = gun.get('words').put({label:'words'})
 var place = gun.get('place').put({label:'place'})
+
+var nodes = new vis.DataSet([
+])
+
+var edges = new vis.DataSet([
+])
+
+var cont = document.getElementById('mynetwork')
+
+var graphData = {
+  nodes: nodes,
+  edges: edges
+}
+var options = {}
+var network = new vis.Network(cont, graphData,options)
 
 ipcRenderer.send('ready', 'Window ready')
 
