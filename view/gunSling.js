@@ -1,6 +1,9 @@
 var Gun = require('gun/gun')
 require('gun/lib/unset.js')
 require('gun-file')
+
+localStorage.clear()
+
 var gun = new Gun( {
   'file-name': 'service.gun',
   'file-mode' : 0666,
@@ -9,7 +12,7 @@ var gun = new Gun( {
   file : false
 })
 
-localStorage.clear()
+
 
 function printData (obj) {
   obj.once((val, key)=>{
