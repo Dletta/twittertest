@@ -6,21 +6,52 @@ var graphVis = function (root) {
   this.root = root,
   this.nodes = [],
   this.edges = [],
-  this.open = [],
+  this.open = [root],
   this.closed = [],
   this.child = [],
-  this.findChildNodes = function(item){
-    var item = item
-    console.log(`finding children for ${item.key}`)
-    node.map().once((val, key)=>{
-      if(key != type) {
-        this.openNodes.push(key)
+  this.setup = function(){
+    var item = this.open.shift()
+    console.log(`finding children for ${item}`)
+    item.map().once((val, key)=>{
+      if(key != 'type') {
+        console.log(key, val);
+        this.child.push(key)
+      }
+    })
+    this.current = item
+  },
+  this.processChild = function() {
+    var root = this.current
+    for(let i=0;i<this.child.length;i++){
+      if(this.closed.indexOf(this.child[i]) != -1){
+        continue
+      }
+
+      if(this.open.indexOf(this.child[i] == -1)){
+        this.edges.push({from:root, to:this.child[i]})
+        this.open.push(this.child[i])
+        console.log(`Got ${this.child[i]}, added to openNodes`);
+        console.log(`new Edge:  ${this.edges}`);
+      }
+
+    }
+  },
+  this.findChildNodes = function(){
+    var item = this.open.shift()
+    this.current = item
+    console.log(`finding children for ${item}`)
+    root.get(item).map().map().map().once((val, key)=>{
+      if(key != 'type') {
+        console.log(key, val);
+        this.child.push(key)
       }
     })
   }
 }
 
 var timeGraph = new graphVis(gun.get('time'))
+timeGraph.setup()
+
 
 /* function getGraph
 * Get the Graph from a specific root nodes

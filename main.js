@@ -86,7 +86,7 @@ function filterData (data) {
   var temp = {}
   temp["place"] = data["place"]
   temp["coordinates"] = data["coordinates"]
-  temp["timestamp"] = data["timestamp_ms"]
+  temp["timestamp"] = data["timestamp_ms"].toString()
   temp["text"] = data["text"]
   return temp
 }

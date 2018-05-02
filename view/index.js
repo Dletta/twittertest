@@ -20,19 +20,19 @@ var Tweets = function () {
     for(let i=0;i<data.words.length;i++){
       words.get(data.words[i]).put({type:"node",data:data.words[i]})
     }
-    console.log('linking place to time');
+
     linkItem(data.place["full_name"], place, data.timestamp, time)
-    console.log('linking place to text');
+
     linkItem(data.place["full_name"], place, data.text, text)
-    console.log('linking text to time');
+
     linkItem(data.timestamp, time, data.text, text)
-    console.log('words');
+
     for(let i=0;i<data.words.length;i++){
-      console.log(`${data.words[i]} to time`);
+
       linkItem(data.words[i], words, data.timestamp, time)
-      console.log(`${data.words[i]} to text`);
+
       linkItem(data.words[i], words, data.text, text)
-      console.log(`${data.words[i]} to place`);
+      
       linkItem(data.words[i], words, data.place["full_name"], place)
     }
   }

@@ -27,8 +27,8 @@ function print(x,y) {
 }
 
 function linkItem (originId, originRoot, linkId, linkRoot) {
-  console.log(`${originId} to ${linkId}`);
+
   originRoot.get(originId).get('linked').set(linkRoot.get(linkId))
-  console.log(`${linkId} to ${originId}`);
+
   linkRoot.get(linkId).get('linked').set(originRoot.get(originId))
 }
