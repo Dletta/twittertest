@@ -32,7 +32,7 @@ var Tweets = function () {
       linkItem(data.words[i], words, data.timestamp, time)
 
       linkItem(data.words[i], words, data.text, text)
-      
+
       linkItem(data.words[i], words, data.place["full_name"], place)
     }
   }
@@ -55,9 +55,12 @@ var words = gun.get('words').put({type:'root'})
 var place = gun.get('place').put({type:'root'})
 /* Setting up Graph */
 var nodes = new vis.DataSet([
+  {id:"Gun",label:"Root"},
+  {id:"15252",label:"15252"},
 ])
 
 var edges = new vis.DataSet([
+  {from:"Gun", to:"15252"}
 ])
 
 var cont = document.getElementById('mynetwork')

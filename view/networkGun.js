@@ -12,7 +12,7 @@ var graphVis = function (root) {
   this.setup = function(){
     var item = this.open.shift()
     console.log(`finding children for ${item}`)
-    item.map().once((val, key)=>{
+    gun.get(item).map().once((val, key)=>{
       if(key != 'type') {
         console.log(key, val);
         this.child.push(key)
@@ -40,7 +40,7 @@ var graphVis = function (root) {
     var item = this.open.shift()
     this.current = item
     console.log(`finding children for ${item}`)
-    root.get(item).map().map().map().once((val, key)=>{
+    gun.get(this.root).get(item).get('linked').map().get('data').once((val, key)=>{
       if(key != 'type') {
         console.log(key, val);
         this.child.push(key)
@@ -49,7 +49,7 @@ var graphVis = function (root) {
   }
 }
 
-var timeGraph = new graphVis(gun.get('time'))
+var timeGraph = new graphVis('time')
 timeGraph.setup()
 
 
