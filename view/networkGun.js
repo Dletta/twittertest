@@ -1,10 +1,6 @@
 /* store methods to modify and build network from gun database */
 
-/* function getGraph
-* Get the Graph from a specific root nodes
-* Create nodes and edges based on the root node
-* Graph Breadth First Search
-*/
+
 
 var graphVis = function (root) {
   this.root = root,
@@ -17,14 +13,20 @@ var graphVis = function (root) {
     var item = item
     console.log(`finding children for ${item.key}`)
     node.map().once((val, key)=>{
-      var node = {}
-      node.id = key
-      node.val = val
-      this.child.push(node)
+      if(key != type) {
+        this.openNodes.push(key)
+      }
     })
   }
 }
 
+var timeGraph = new graphVis(gun.get('time'))
+
+/* function getGraph
+* Get the Graph from a specific root nodes
+* Create nodes and edges based on the root node
+* Graph Breadth First Search
+*/
 
 function getGraph(root, nodes, edges){
   var openNodes = []
