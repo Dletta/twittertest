@@ -15,13 +15,20 @@ var gun = new Gun( {
 
 
 function printData (obj) {
-  obj.once((val, key)=>{
-    if(typeof val != "object"){
-      console.log(`${key}:${val}`);
-    }
-  })
+  obj.map().once(print)
+}
+
+function printChildren (obj) {
+  obj.map().map().map().once(print)
 }
 
 function print(x,y) {
-  console.log(`Node with ${y} : ${x}`)
+  console.log(`${y} : ${x}`)
+}
+
+function linkItem (originId, originRoot, linkId, linkRoot) {
+  console.log(`${originId} to ${linkId}`);
+  originRoot.get(originId).get('linked').set(linkRoot.get(linkId))
+  console.log(`${linkId} to ${originId}`);
+  linkRoot.get(linkId).get('linked').set(originRoot.get(originId))
 }

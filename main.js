@@ -6,7 +6,6 @@ const url = require('url')
 var twitter = require('ntwitter');
 
 
-
 let win
 
 function createWindow () {
@@ -62,6 +61,7 @@ function getStream () {
     })
 
     stream.on('data', function (data) {
+      /*console.log(data);*/ /* Uncomment for verbose gathering */
       var data = filterData(data)
       win.webContents.send('newTweet', data)
     });
@@ -84,7 +84,7 @@ ipcMain.on('getStream', (event, msg) =>{
 
 function filterData (data) {
   var temp = {}
-  temp["location"] = data["place"]
+  temp["place"] = data["place"]
   temp["coordinates"] = data["coordinates"]
   temp["timestamp"] = data["timestamp_ms"]
   temp["text"] = data["text"]
@@ -92,7 +92,7 @@ function filterData (data) {
 }
 
 /* Output: {
-*"location":object,
+*"place":object,
 *"coordinates": null or array of coordinates,
 *"timestamp":ms since 1968,
 *"text":tweetText}*/

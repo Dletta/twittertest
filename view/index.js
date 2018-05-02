@@ -10,38 +10,30 @@ var Tweets = function () {
   this.word = []
   this.text = []
   this.process = function(data) {
-    /*create objects for each data information that is not an object
-    * makes it easier for working with the gunDB
+    /* Split text into words
     */
     data.words = data.text.split(" ")
+    /*Enter Data, link with ID which is string or number */
+    place.get(data.place["full_name"]).put({type:"node", data:data.place})
+    time.get(data.timestamp).put({type:"node", data:data.timestamp})
+    text.get(data.text).put({type:"node", data:data.text})
     for(let i=0;i<data.words.length;i++){
-      data.words[i] = {word: data.words[i]}
+      words.get(data.words[i]).put({type:"node",data:data.words[i]})
     }
-    data.text = {text:data.text}
-    data.timestamp = {timestamp:data.timestamp}
-    /*Enter Data and capture Id for linking */
-    data.wordId = []
+    console.log('linking place to time');
+    linkItem(data.place["full_name"], place, data.timestamp, time)
+    console.log('linking place to text');
+    linkItem(data.place["full_name"], place, data.text, text)
+    console.log('linking text to time');
+    linkItem(data.timestamp, time, data.text, text)
+    console.log('words');
     for(let i=0;i<data.words.length;i++){
-      data.wordId.push(words.set(data.words[i]))
-    }
-    data.placeId = place.set(data.location)
-    data.timeId = time.set(data.timestamp)
-    data.textId = text.set(data.text)
-    /* Link data with each other */
-    console.log(data.timeId);
-    data.timeId.set(data.textId)
-    data.timeId.set(data.placeId)
-    data.textId.set(data.timeId)
-    data.textId.set(data.placeId)
-    data.placeId.set(data.textId)
-    data.placeId.set(data.timeId)
-    for(let i=0;i<data.wordId.length;i++){
-      data.timeId.set(data.wordId[i])
-      data.textId.set(data.wordId[i])
-      data.placeId.set(data.wordId[i])
-      data.wordId[i].set(data.timeId)
-      data.wordId[i].set(data.textId)
-      data.wordId[i].set(data.placeId)
+      console.log(`${data.words[i]} to time`);
+      linkItem(data.words[i], words, data.timestamp, time)
+      console.log(`${data.words[i]} to text`);
+      linkItem(data.words[i], words, data.text, text)
+      console.log(`${data.words[i]} to place`);
+      linkItem(data.words[i], words, data.place["full_name"], place)
     }
   }
 }
@@ -57,11 +49,11 @@ console.log('ready');
 
 /* Setup of the main roots */
 
-var time = gun.get('time').put({label:'time'})
-var text = gun.get('text').put({label:'text'})
-var words = gun.get('words').put({label:'words'})
-var place = gun.get('place').put({label:'place'})
-
+var time = gun.get('time').put({type:'root'})
+var text = gun.get('text').put({type:'root'})
+var words = gun.get('words').put({type:'root'})
+var place = gun.get('place').put({type:'root'})
+/* Setting up Graph */
 var nodes = new vis.DataSet([
 ])
 
@@ -77,6 +69,8 @@ var graphData = {
 var options = {}
 var network = new vis.Network(cont, graphData,options)
 
+/* Main JS communication events */
+
 ipcRenderer.send('ready', 'Window ready')
 
 ipcRenderer.on('clientLog', (event, msg) => {
@@ -85,7 +79,7 @@ ipcRenderer.on('clientLog', (event, msg) => {
 
 
 /* Input: {
-*"location":object,
+*"place":object,
 *"coordinates": object,
 *"timestamp":ms since 1968,
 *"text":tweetText}*/
