@@ -40,10 +40,6 @@ var Tweets = function () {
 
 var twit = new Tweets()
 
-var app = new Vue({
-  el: "#cont",
-  data: twit
-})
 
 console.log('ready');
 

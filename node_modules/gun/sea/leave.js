@@ -6,14 +6,14 @@
     const authLeave = async (gunRoot, alias = gunRoot._.user._.alias) => {
       var user = gunRoot._.user._ || {};
       [ 'get', 'soul', 'ack', 'put', 'is', 'alias', 'pub', 'epub', 'sea' ].map((key) => delete user[key])
-      if(user.gun){
-        delete user.gun.is;
+      if(user.$){
+        delete user.$.is;
       }
       // Let's use default
       gunRoot.user();
       // Removes persisted authentication & CryptoKeys
       try {
-        await authPersist({ alias })
+        await authPersist({ alias: alias })
       } catch (e) {}  //eslint-disable-line no-empty
       return { ok: 0 }
     }

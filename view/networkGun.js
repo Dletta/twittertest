@@ -49,8 +49,7 @@ var graphVis = function (root) {
   }
 }
 
-var timeGraph = new graphVis('time')
-timeGraph.setup()
+
 
 
 /* function getGraph

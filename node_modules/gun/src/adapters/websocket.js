@@ -18,7 +18,10 @@ Gun.on('opt', function(root){
 	opt.WebSocket = websocket;
 
 	var mesh = opt.mesh = opt.mesh || Gun.Mesh(root);
-	root.on('out', mesh.out);
+	root.on('create', function(at){
+		this.to.next(at);
+		root.on('out', mesh.out);
+	});
 
 	opt.wire = opt.wire || open;
 	function open(peer){
@@ -41,6 +44,7 @@ Gun.on('opt', function(root){
 		}
 		wire.onmessage = function(msg){
 			if(!msg){ return }
+			env.inLength = (env.inLength || 0) + (msg.data || msg).length; // TEMPORARY, NON-STANDARD, FOR DEBUG
 			mesh.hear(msg.data || msg, peer);
 		};
 		return wire;

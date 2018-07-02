@@ -1,15 +1,17 @@
 var Gun = require('gun')
-
 require('gun-file')
+
+process.GUN_ENV = 'debug'
 
 localStorage.clear()
 
 var gun = new Gun( {
+  file : false,
   'file-name': 'service.gun',
   'file-mode' : 0666,
   'file-pretty' : true,
-  'file-delay' : 100,
-  file : false
+  'file-delay' : 100
+
 })
 
 
