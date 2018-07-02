@@ -533,7 +533,7 @@
          "#": "text",
          ">": {
             "type": 1525730626585.42,
-            "Man, you got me fucked up 😪": 1525299023308.125,
+            "Man, you got me f**** up 😪": 1525299023308.125,
             "@DRILL_TFWS 症状読んでガクブルだったんだけど、これは珍しいケース？": 1525299026660.57,
             "Kanye sounded so stupid in that TMZ interview": 1525299027457.695,
             "Really like Apple’s “maybe: ___” feature for unsaved numbers bc that way I don’t inherently memorize the fuckboys n… https://t.co/Q3YrtlUee0": 1525730822701.38,
@@ -665,7 +665,7 @@
          }
       },
       "type": "root",
-      "Man, you got me fucked up 😪": {
+      "Man, you got me f**** up 😪": {
          "#": "jgpnnmq4fnu3diEOz0jWPMM2hf"
       },
       "@DRILL_TFWS 症状読んでガクブルだったんだけど、これは珍しいケース？": {
@@ -1073,7 +1073,7 @@
             "you": 1525731219143.46,
             "got": 1525731025198.375,
             "me": 1525731230174.81,
-            "fucked": 1525299023333.53,
+            "f****": 1525299023333.53,
             "up": 1525731234208.08,
             "😪": 1525299023338.2,
             "@DRILL_TFWS": 1525299026661.67,
@@ -2081,7 +2081,7 @@
       "me": {
          "#": "jgpnnmqpzto6r0c1PXzDePHi6"
       },
-      "fucked": {
+      "f****": {
          "#": "jgpnnmqtwkx1orVATqnT3K4Pka"
       },
       "up": {
@@ -5236,7 +5236,7 @@
          }
       },
       "type": "node",
-      "data": "Man, you got me fucked up 😪",
+      "data": "Man, you got me f**** up 😪",
       "linked": {
          "#": "jgpnnmr6dbo6r1GtuacfnWO5O"
       }
@@ -5326,7 +5326,7 @@
          }
       },
       "type": "node",
-      "data": "fucked",
+      "data": "f****",
       "linked": {
          "#": "jgpnnms5n7y14iETmxBM3z9HcK"
       }

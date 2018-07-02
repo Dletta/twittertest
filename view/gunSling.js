@@ -1,5 +1,5 @@
-var Gun = require('gun/gun')
-require('gun/lib/unset.js')
+var Gun = require('gun')
+
 require('gun-file')
 
 localStorage.clear()

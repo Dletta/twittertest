@@ -53,24 +53,7 @@ var time = gun.get('time').put({type:'root'})
 var text = gun.get('text').put({type:'root'})
 var words = gun.get('words').put({type:'root'})
 var place = gun.get('place').put({type:'root'})
-/* Setting up Graph */
-var nodes = new vis.DataSet([
-  {id:"Gun",label:"Root"},
-  {id:"15252",label:"15252"},
-])
 
-var edges = new vis.DataSet([
-  {from:"Gun", to:"15252"}
-])
-
-var cont = document.getElementById('mynetwork')
-
-var graphData = {
-  nodes: nodes,
-  edges: edges
-}
-var options = {}
-var network = new vis.Network(cont, graphData,options)
 
 /* Main JS communication events */
 
