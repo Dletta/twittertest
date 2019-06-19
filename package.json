@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/fuchidahiro/twittertest#readme",
   "dependencies": {
-    "gun": "^0.9.9993",
+    "gun": "^0.2019.612",
     "gun-file": "^1.0.123",
     "ntwitter": "^0.5.0"
   },
